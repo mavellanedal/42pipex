@@ -6,7 +6,7 @@
 /*   By: mavellan <mavellan@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 21:13:16 by mavellan          #+#    #+#             */
-/*   Updated: 2025/02/12 19:43:37 by mavellan         ###   ########.fr       */
+/*   Updated: 2025/02/20 19:35:54 by mavellan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,16 @@
 # define PIPEX_h
 
 # include "../libft/libft.h"
+# include <unistd.h>
+# include <string.h>
+# include <stdlib.h>
+# include <stdio.h>
+# include <sys/stat.h>
+# include <sys/wait.h>
+
+
+
+
 
 typedef struct s_pipex
 {
