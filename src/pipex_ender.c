@@ -6,11 +6,11 @@
 /*   By: mavellan <mavellan@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 19:29:39 by mavellan          #+#    #+#             */
-/*   Updated: 2025/02/17 19:35:55 by mavellan         ###   ########.fr       */
+/*   Updated: 2025/02/20 19:25:54 by mavellan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./include/pipex.h"
+#include "../include/pipex.h"
 
 int	ft_error_msg(char *str1, char *str2, char *str3, int num_error)
 {
@@ -50,5 +50,29 @@ void	ft_exit(int error_msg, t_pipex *pipex)
 			free(pipex->pipe);
 		if (pipex->pids)
 			free(pipex->pids);
+		if (pipex->cmd_options || pipex->cmd_path)
+			ft_free_pipex(pipex->cmd_path, pipex->cmd_options);
+	}
+}
+
+void	ft_free_pipex(char *str1, char *str2)
+{
+	int	i;
+
+	if (str1 != NULL)
+	{
+		free(str1);
+		str1 = NULL;
+	}
+	i = 0;
+	if (str2 != NULL)
+	{
+		while (str2[i])
+		{
+			free(str2[i]);
+			i++;
+		}
+		free(str2);
+		str2 = NULL;
 	}
 }

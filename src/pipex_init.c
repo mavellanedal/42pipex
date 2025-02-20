@@ -6,11 +6,11 @@
 /*   By: mavellan <mavellan@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 19:38:53 by mavellan          #+#    #+#             */
-/*   Updated: 2025/02/13 08:43:22 by mavellan         ###   ########.fr       */
+/*   Updated: 2025/02/20 19:24:34 by mavellan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./include/pipex.h"
+#include "../include/pipex.h"
 
 t_pipex	init_struct(void)
 {
