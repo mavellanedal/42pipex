@@ -10,6 +10,7 @@ SRCS = pipex.c \
 	src/pipex_init.c \
 	src/pipex_open_files.c \
 	src/pipex_runner.c \
+	src/pipex_getters.c \
 
 
 OBJS = ${SRCS:.c=.o}
