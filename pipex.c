@@ -6,7 +6,7 @@
 /*   By: mavellan <mavellan@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 21:12:27 by mavellan          #+#    #+#             */
-/*   Updated: 2025/02/13 08:43:28 by mavellan         ###   ########.fr       */
+/*   Updated: 2025/02/21 09:42:11 by mavellan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ int	main(int ac, char **av, char *env[])
 		return (ft_error_msg("Usage: ",
 		"./pipex here_doc LIMITER cmd1 cmd2 ... cmdn file2", "", 1));
 	if (!env || env[0][0] == '\0')
-
-	pipex = px_init(ac, av, env);
+		ft_exit(ft_error_msg("Unexpected error.", "", "", 1), &pipex);
+	pipex = pipex_init(ac, av, env);
+	exit_code = ft_run_pipex(&pipex);
 }

@@ -6,7 +6,7 @@
 /*   By: mavellan <mavellan@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 21:13:16 by mavellan          #+#    #+#             */
-/*   Updated: 2025/02/20 19:35:54 by mavellan         ###   ########.fr       */
+/*   Updated: 2025/02/21 09:30:15 by mavellan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,16 +20,16 @@
 # include <stdio.h>
 # include <sys/stat.h>
 # include <sys/wait.h>
+# include <fcntl.h>
+# include <errno.h>
+# include <signal.h>
 
-
-
-
-
+// Estrucutras
 typedef struct s_pipex
 {
 	char	**env;
 	char	**av;
-	int		argc;
+	int		ac;
 	int		here_doc;
 	int		fd_in;
 	int		fd_out;
@@ -41,7 +41,20 @@ typedef struct s_pipex
 	char	*cmd_path;
 }	t_pipex;
 
+// pipex_ender.c
 int		ft_error_msg(char *str1, char *str2, char *str3, int num_error);
+void	ft_close_pipe_fd(t_pipex *pipex);
+void	ft_close_fd(t_pipex *pipex);
+void	ft_exit(int error_msg, t_pipex *pipex);
+void	ft_free_pipex(char *str1, char *str2);
+
+// pipex_init.c
 t_pipex	pipex_init(int ac, char **av, char *env[]);
+
+//pipex_open_files.c
+void	ft_open_input(t_pipex *pipex);
+void	ft_get_heredoc(t_pipex *pipex);
+void	ft_open_output(t_pipex *pipex);
+
 
 #endif
