@@ -6,7 +6,7 @@
 /*   By: mavellan <mavellan@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 19:33:02 by mavellan          #+#    #+#             */
-/*   Updated: 2025/02/21 09:28:57 by mavellan         ###   ########.fr       */
+/*   Updated: 2025/03/12 13:23:23 by mavellan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	ft_open_input(t_pipex *pipex)
 	else
 	{
 		pipex->fd_in = open(pipex->av[1], O_RDONLY, 644);
-		if (pipex->fd_in == -1);
+		if (pipex->fd_in == -1)
 			ft_error_msg(strerror(errno), ": ", pipex->av[1], 1);
 	}
 }
@@ -57,9 +57,9 @@ void	ft_get_heredoc(t_pipex *pipex)
 		ft_putstr_fd("here_doc > ", 1);
 		line = get_next_line(stdin_fd);
 		if (line == NULL)
-			break;
-		if (ft_stlen(pipex->av[2]) + 1 == ft_strlen(line) \
-			&& !ft_strncmp(line, pipex->av[2], ft_strlen(pipex->av[2])))
+			break ;
+		if (ft_strlen(pipex->av[2]) + 1 == ft_strlen(line) \
+			&& !ft_strncmp(line, pipex->av[2], ft_strlen(pipex->av[2] + 1)))
 			close (stdin_fd);
 		else
 			ft_putstr_fd(line, tmp_fd);

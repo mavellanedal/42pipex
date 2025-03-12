@@ -6,7 +6,7 @@
 /*   By: mavellan <mavellan@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/21 14:19:51 by mavellan          #+#    #+#             */
-/*   Updated: 2025/02/21 14:35:54 by mavellan         ###   ########.fr       */
+/*   Updated: 2025/03/12 13:15:42 by mavellan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,13 +36,13 @@ char	*ft_get_full_path(char **env)
 
 	i = 0;
 	path = NULL;
-	while(env[i] && env[1][0] != '\0')
+	while (env[i] && env[1][0] != '\0')
 	{
 		path = ft_strnstr(env[i], "PATH=", 5);
 		if (path)
 		{
 			path = ft_substr(path, 5, ft_strlen(path));
-			break;
+			break ;
 		}
 		i++;
 	}
@@ -54,14 +54,14 @@ char	**ft_get_env_paths(char **env)
 	char	*env_paths;
 	char	**paths;
 
-	env_paths = ft_get_full_path(env); // to do
+	env_paths = ft_get_full_path(env);
 	if (!env_paths)
 		return (NULL);
 	paths = ft_split(env_paths, ':');
 	ft_free_pipex(env_paths, NULL);
 	if (!paths)
 		return (NULL);
-	paths = ft_complete_paths(paths); // to do
+	paths = ft_complete_paths(paths);
 	if (!paths)
 		return (NULL);
 	return (paths);
@@ -93,10 +93,10 @@ char	*ft_get_cmd_path(char *cmd, char **paths)
 char	*ft_get_cmd(char *cmd, t_pipex *pipex)
 {
 	char	**paths;
-	char	**cmd_path;
+	char	*cmd_path;
 
-	if (access(cmd, F_OK | X_OK ) == 0)
-		retunr (ft_strdup(cmd));
+	if (access(cmd, F_OK | X_OK) == 0)
+		return (ft_strdup(cmd));
 	paths = ft_get_env_paths(pipex->env);
 	if (!paths)
 		return (NULL);
@@ -104,6 +104,6 @@ char	*ft_get_cmd(char *cmd, t_pipex *pipex)
 	if (!cmd_path)
 		ft_error_msg("command not found", ": ", \
 			pipex->av[pipex->child + 2], 1);
-		ft_free_pipex(NULL, paths);
-		return (cmd_path);
+	ft_free_pipex(NULL, paths);
+	return (cmd_path);
 }

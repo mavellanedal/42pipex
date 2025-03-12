@@ -6,7 +6,7 @@
 /*   By: mavellan <mavellan@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 19:29:39 by mavellan          #+#    #+#             */
-/*   Updated: 2025/02/20 19:25:54 by mavellan         ###   ########.fr       */
+/*   Updated: 2025/03/12 12:11:03 by mavellan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 int	ft_error_msg(char *str1, char *str2, char *str3, int num_error)
 {
+	ft_putstr_fd("pipex: ", 2);
 	ft_putstr_fd(str1, 2);
 	ft_putstr_fd(str2, 2);
 	ft_putstr_fd(str3, 2);
@@ -41,7 +42,7 @@ void	ft_close_fd(t_pipex *pipex)
 	ft_close_pipe_fd(pipex);
 }
 
-void	ft_exit(int error_msg, t_pipex *pipex)
+void	ft_exit(int error_code, t_pipex *pipex)
 {
 	if (pipex)
 	{
@@ -53,9 +54,12 @@ void	ft_exit(int error_msg, t_pipex *pipex)
 		if (pipex->cmd_options || pipex->cmd_path)
 			ft_free_pipex(pipex->cmd_path, pipex->cmd_options);
 	}
+	if (pipex->here_doc == 1)
+		unlink(".heredoc.tmp");
+	exit (error_code);
 }
 
-void	ft_free_pipex(char *str1, char *str2)
+void	ft_free_pipex(char *str1, char **str2)
 {
 	int	i;
 
@@ -64,9 +68,9 @@ void	ft_free_pipex(char *str1, char *str2)
 		free(str1);
 		str1 = NULL;
 	}
-	i = 0;
 	if (str2 != NULL)
 	{
+		i = 0;
 		while (str2[i])
 		{
 			free(str2[i]);

@@ -1,10 +1,27 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: mavellan <mavellan@student.42barcelona.    +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2025/03/12 11:29:20 by mavellan          #+#    #+#              #
+#    Updated: 2025/03/12 11:42:07 by mavellan         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+# Colors
+DEF_COLOR = \033[0;39m
+YELLOW = \033[0;93m
+CYAN = \033[0;96m
+GREEN = \033[0;92m
+BLUE = \033[0;94m
+RED = \033[0;91m
+
 NAME = libft.a
 CC = cc
-CFLAGS = -Wall -Werror -Wextra
-AR = ar rcs
+FLAGS = -Wall -Werror -Wextra
 RM = rm -f
-MAKEFILE = Makefile
-LIBFT = libft.h
 
 SRC = ft_isalpha.c \
 	ft_isdigit.c \
@@ -56,18 +73,22 @@ SRC = ft_isalpha.c \
 
 OBJ = $(SRC:.c=.o)
 
+%.o: %.c libft.h Makefile
+	$(CC) $(FLAGS) -I. -c $< -o $@
+	@echo "$(YELLOW)Compiling: $< $(DEF_COLOR)"
+
 all: $(NAME)
 
-$(NAME): $(OBJ) $(MAKEFILE) $(LIBFT)
-	$(AR) $(NAME) $(OBJ)
-
-%.o: %.c
-	$(CC) $(CFLAGS) -c $< -o $@
+$(NAME): $(OBJ)
+	ar rcs $(NAME) $(OBJ)
 
 clean:
-	$(RM) $(OBJ) $(BONUS_OBJ)
+	$(RM) $(OBJ)
 
 fclean: clean
 	$(RM) $(NAME)
 
 re: fclean all
+
+.PHONY: all clean fclean re
+

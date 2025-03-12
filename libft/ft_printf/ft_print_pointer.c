@@ -6,11 +6,11 @@
 /*   By: mavellan <mavellan@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 17:36:46 by mavellan          #+#    #+#             */
-/*   Updated: 2025/02/11 21:15:57 by mavellan         ###   ########.fr       */
+/*   Updated: 2025/03/12 11:43:19 by mavellan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ft_printf.h"
+#include "./includes/ft_printf.h"
 
 void	ft_puthex(unsigned long long num)
 {

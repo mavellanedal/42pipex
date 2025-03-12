@@ -6,11 +6,11 @@
 /*   By: mavellan <mavellan@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 13:32:17 by mavellan          #+#    #+#             */
-/*   Updated: 2025/02/11 21:16:03 by mavellan         ###   ########.fr       */
+/*   Updated: 2025/03/12 11:43:08 by mavellan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ft_printf.h"
+#include "./includes/ft_printf.h"
 
 int	ft_printf(const char *format, ...)
 {

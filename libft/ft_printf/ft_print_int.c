@@ -6,11 +6,11 @@
 /*   By: mavellan <mavellan@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 17:02:56 by mavellan          #+#    #+#             */
-/*   Updated: 2025/02/11 21:15:52 by mavellan         ###   ########.fr       */
+/*   Updated: 2025/03/12 11:43:22 by mavellan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ft_printf.h"
+#include "./includes/ft_printf.h"
 
 void	ft_putnbr(int num, int *len)
 {
