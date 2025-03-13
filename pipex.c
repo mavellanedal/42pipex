@@ -6,11 +6,16 @@
 /*   By: mavellan <mavellan@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 21:12:27 by mavellan          #+#    #+#             */
-/*   Updated: 2025/03/12 11:46:53 by mavellan         ###   ########.fr       */
+/*   Updated: 2025/03/13 19:44:13 by mavellan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "include/pipex.h"
+
+/*It compares if the program have 2 or more arguments and there
+is no here_doc added.
+If it have heredoce, it must have at least 6  arguments.
+Also check if ther is no env.*/
 
 int	main(int ac, char **av, char *env[])
 {

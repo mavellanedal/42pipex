@@ -6,12 +6,17 @@
 /*   By: mavellan <mavellan@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 19:33:02 by mavellan          #+#    #+#             */
-/*   Updated: 2025/03/12 13:23:23 by mavellan         ###   ########.fr       */
+/*   Updated: 2025/03/13 19:50:00 by mavellan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/pipex.h"
 
+/*If there is a here_doc in the program executation, the program will get it,
+then we will open a temporal file for the here_doc.
+If there isn't here_doc the program only open the file in the first position
+of the argv.
+Bouth of them are opened with read only permissions.*/
 void	ft_open_input(t_pipex *pipex)
 {
 	if (pipex->here_doc == 1)

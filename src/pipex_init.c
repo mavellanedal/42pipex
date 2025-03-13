@@ -6,12 +6,13 @@
 /*   By: mavellan <mavellan@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 19:38:53 by mavellan          #+#    #+#             */
-/*   Updated: 2025/03/12 13:19:11 by mavellan         ###   ########.fr       */
+/*   Updated: 2025/03/13 19:46:54 by mavellan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/pipex.h"
 
+/*This funciont create the n number of pipes depending of the commands.*/
 void	ft_make_pipes(t_pipex *pipex)
 {
 	int	i;
@@ -44,6 +45,9 @@ t_pipex	init_struct(void)
 	return (pipex);
 }
 
+/*This funciont create de pipex strucutre and if ther is no here_doc it don't
+add it to de struct, then open the input and output file and count the nbr of
+commands in the executation. For last we create the pipes.*/
 t_pipex	pipex_init(int ac, char **av, char *env[])
 {
 	t_pipex	pipex;
