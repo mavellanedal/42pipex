@@ -6,7 +6,7 @@
 /*   By: mavellan <mavellan@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 19:33:02 by mavellan          #+#    #+#             */
-/*   Updated: 2025/03/13 19:50:00 by mavellan         ###   ########.fr       */
+/*   Updated: 2025/03/27 12:37:32 by mavellan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 then we will open a temporal file for the here_doc.
 If there isn't here_doc the program only open the file in the first position
 of the argv.
-Bouth of them are opened with read only permissions.*/
+Bouth of them are opened with read only permissions. */
 void	ft_open_input(t_pipex *pipex)
 {
 	if (pipex->here_doc == 1)
@@ -34,6 +34,13 @@ void	ft_open_input(t_pipex *pipex)
 	}
 }
 
+/*If there is a here_doc in the program executation, it will create open de out_file
+with the parameters O_APPEND para agregar conteindo al final del archuivo, en caso de no haber here_doc
+el contenido se borra completamente.
+If there isn't here_doc the program only open the file in the first position
+of the argv.
+Bouth of them are opened with read only permissions. */
+
 void	ft_open_output(t_pipex *pipex)
 {
 	if (pipex->here_doc == 1)
@@ -46,6 +53,8 @@ void	ft_open_output(t_pipex *pipex)
 		ft_error_msg(strerror(errno), ": ", pipex->av[pipex->ac - 1], 1);
 }
 
+/*It reed the inputs of the terminal while the intpus is not the LIMITER.
+Save the lines in .heredoc.tmp*/
 void	ft_get_heredoc(t_pipex *pipex)
 {
 	int		tmp_fd;

@@ -6,7 +6,7 @@
 /*   By: mavellan <mavellan@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/21 14:19:51 by mavellan          #+#    #+#             */
-/*   Updated: 2025/03/12 13:15:42 by mavellan         ###   ########.fr       */
+/*   Updated: 2025/03/27 12:47:24 by mavellan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ char	**ft_complete_paths(char **paths)
 	return (paths);
 }
 
+/*Search the PATH= by the env and then divide the directories by / */
 char	*ft_get_full_path(char **env)
 {
 	char	*path;
@@ -67,6 +68,7 @@ char	**ft_get_env_paths(char **env)
 	return (paths);
 }
 
+/*Try to build the path of the comand and check if is executable*/
 char	*ft_get_cmd_path(char *cmd, char **paths)
 {
 	int		i;
@@ -90,6 +92,8 @@ char	*ft_get_cmd_path(char *cmd, char **paths)
 	return (NULL);
 }
 
+/*If the command is an comand with absolute path and executable, it run the comand.
+Else it search it in the env variables. */
 char	*ft_get_cmd(char *cmd, t_pipex *pipex)
 {
 	char	**paths;

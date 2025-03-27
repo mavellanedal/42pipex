@@ -6,12 +6,13 @@
 /*   By: mavellan <mavellan@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/21 09:41:10 by mavellan          #+#    #+#             */
-/*   Updated: 2025/03/12 13:27:41 by mavellan         ###   ########.fr       */
+/*   Updated: 2025/03/27 12:43:45 by mavellan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/pipex.h"
 
+/*Redirect the files input and output to the stdin and stdout*/
 void	ft_redir(int input, int output, t_pipex *pipex)
 {
 	if (dup2(input, STDIN_FILENO) == -1)
@@ -20,6 +21,8 @@ void	ft_redir(int input, int output, t_pipex *pipex)
 		ft_exit(1, pipex);
 }
 
+/*Whait while the child process ends and then return the exit code of the last
+childprocess*/
 int	ft_ex_parent(t_pipex *pipex)
 {
 	pid_t	wpid;
@@ -44,6 +47,7 @@ int	ft_ex_parent(t_pipex *pipex)
 	return (exit_code);
 }
 
+/*Redirect the the input and outpu, then close the files and execute execve.*/
 void	ft_ex_child(t_pipex *pipex)
 {
 	if (pipex->child == 0)
@@ -61,6 +65,10 @@ void	ft_ex_child(t_pipex *pipex)
 		strerror(errno), 1), pipex);
 }
 
+/*Create a initial pipe. For each comand divides the arguments with split,
+then finde the path of the comand, create a child process and it executate the
+child process. In the parent process, whait while the child process ends and if
+heredoc exist, delete the .heredoc.tmp*/
 int	ft_run_pipex(t_pipex *pipex)
 {
 	int	exit_code;
